@@ -8,14 +8,11 @@ interface Props {
 }
 
 export const Card = ({ link, title, content, date }: Props) => {
-
   return (
     <div
       className="card"
       style={{
-        width: "400px",
-        height: "300px",
-        margin: "5px",
+        textAlign: "center",
         padding: "5px",
         display: "flex",
         flexDirection: "column",

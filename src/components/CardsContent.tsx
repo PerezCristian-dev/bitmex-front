@@ -1,16 +1,17 @@
-import { setAnnouncement } from "@/redux/announcement/announcement.slice";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux/es/exports";
+import { Announcement } from "@interfaces/app.interface";
+import { setAnnouncement } from "@redux/announcement/announcement.slice";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import announcementProvider from "../provider/announcement/index";
 import { Card } from "./Card";
-import { Announcement } from '../interfaces/app.interface';
-
-
+import { SearchBar } from "./SearchBar";
+import { FindBitMexApiQuery } from '../interfaces/app.interface';
 
 export const CardsContent = () => {
-  // const [data, setData] = useState<Announcement[]>();
-  const data: Array<Announcement> = useSelector((state: any) => state.announcements.data)
-  const dispatch = useDispatch()
+  const data: Array<Announcement> = useSelector(
+    (state: any) => state.announcement.data
+  );
+  const dispatch = useDispatch();
 
   const getData = async () => {
     const res = await announcementProvider.getAnnouncement();
@@ -21,17 +22,28 @@ export const CardsContent = () => {
     getData();
   }, []);
 
-
-
   return (
-    <div className="row row-sm " style={{ width: "100%" }}>
-      {data?.map(({content, date,link, id, title}, index) => (
-        <Card key={id} link={link} title={title} content={content} date={date} />
+    <div className="" style={{ width: "100%", padding: 0 }}>
+      <div
+        style={{
+          width: "100%",
+          background: "black",
+          color: "white",
+          padding: "20px",
+        }}
+      >
+        <h3>News</h3>
+        <SearchBar getData={getData}/>
+      </div>
+      {data?.map(({ content, date, link, id, title }, index) => (
+        <Card
+          key={id}
+          link={link}
+          title={title}
+          content={content}
+          date={date}
+        />
       ))}
     </div>
   );
 };
-function dispatch() {
-  throw new Error("Function not implemented.");
-}
-

@@ -1,5 +1,6 @@
-import { ObjectKeyDynamicI } from "@/interfaces/app.interface";
+
 import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
+import { ObjectKeyDynamicI } from '../interfaces/app.interface';
 class Base {
   private readonly axios: AxiosInstance;
 

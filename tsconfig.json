@@ -4,7 +4,7 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": true,
+    "strict": false,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
@@ -14,8 +14,29 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "baseUrl": "./src",
     "paths": {
-      "@/*": ["./src/*"]
+      "@components": ["components"],
+      "@components/*": ["components/*"],
+      "@config": ["config"],
+      "@config/*": ["config/*"],
+      "@helpers": ["helpers"],
+      "@helpers/*": ["helpers/*"],
+      "@interfaces": ["interfaces"],
+      "@interfaces/*": ["interfaces/*"],
+      "@pages": ["pages"],
+      "@pages/*": ["pages/*"],
+      "@providers": ["provider"],
+      "@providers/*": ["provider/*"],
+      "@redux": ["redux"],
+      "@redux/*": ["redux/*"],
+      "@settings": ["settings"],
+      "@settings/*": ["settings/*"],
+      "@root": ["../"],
+      "@root/*": ["../*"],
+       "~/*": [
+        "./*"
+      ]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

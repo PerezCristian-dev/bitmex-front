@@ -1,6 +1,7 @@
-import { configureStore } from "@reduxjs/toolkit";
+
 import announcementSlice from "./announcement/announcement.slice";
 import socketSlice from "./socket/socket.slice";
+import { configureStore } from '@reduxjs/toolkit';
 
 export const store = configureStore({
   reducer: {

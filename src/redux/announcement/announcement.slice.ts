@@ -1,7 +1,8 @@
 
 
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import { CreateCardPayloadI } from './announcement.type';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export const initialData: {
     data: CreateCardPayloadI[]
