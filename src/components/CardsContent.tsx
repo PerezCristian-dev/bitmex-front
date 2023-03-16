@@ -22,6 +22,8 @@ export const CardsContent = () => {
     getData();
   }, []);
 
+  console.log(data)
+
   return (
     <div className="" style={{ width: "100%", padding: 0 }}>
       <div
@@ -35,7 +37,9 @@ export const CardsContent = () => {
         <h3>News</h3>
         <SearchBar getData={getData}/>
       </div>
-      {data?.map(({ content, date, link, id, title }, index) => (
+
+      
+      {data.length===0? <div style={{background:"white", padding:"25px", textAlign:"center", fontWeight:"900"}}>No Records Found.</div> :data?.map(({ content, date, link, id, title }, index) => (
         <Card
           key={index}
           link={link}
