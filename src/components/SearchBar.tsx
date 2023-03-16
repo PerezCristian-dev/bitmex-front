@@ -9,6 +9,7 @@ import {
   IDateRangeQuery,
 } from "../interfaces/app.interface";
 import announcementProvider from "../provider/announcement/index";
+import { Legend } from "chart.js";
 
 export const SearchBar = ({ getData }) => {
   const dispatch = useDispatch();
@@ -25,7 +26,10 @@ export const SearchBar = ({ getData }) => {
         value: search,
       },
     };
-    handleChange(e);
+
+    if (value.length > 1) {
+      handleChange(e);
+    }
     setDateRange(value);
   };
 
@@ -50,10 +54,12 @@ export const SearchBar = ({ getData }) => {
           end,
         };
 
-        filterData({
-          search: target.value,
-          dateRange: newRange,
-        });
+        if (newRange.end && newRange.start) {
+          filterData({
+            search: search,
+            dateRange: newRange,
+          });
+        }
       }
     }
   };
@@ -71,7 +77,7 @@ export const SearchBar = ({ getData }) => {
           placeholder="Search for anything..."
           type="search"
           style={{ margin: 0 }}
-          value={search}
+          // value={search}
           onChange={handleChange}
         />
       </div>
@@ -80,6 +86,7 @@ export const SearchBar = ({ getData }) => {
           name="checkbox"
           type="checkbox"
           onChange={handleCheck}
+          // value={check? 1:0}
           checked={check ? true : false}
           style={{ marginRight: "5px" }}
         />
@@ -98,7 +105,7 @@ export const SearchBar = ({ getData }) => {
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DateRangePicker
               calendars={1}
-              value={dateRange}
+              // value={dateRange}
               onChange={handleDatePicker}
             />
           </LocalizationProvider>

@@ -37,7 +37,7 @@ export const CardsContent = () => {
       </div>
       {data?.map(({ content, date, link, id, title }, index) => (
         <Card
-          key={id}
+          key={index}
           link={link}
           title={title}
           content={content}
